@@ -93,7 +93,91 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h5 id="CSS补充知识"><a href="#CSS补充知识" class="headerlink" title="CSS补充知识"></a>CSS补充知识</h5>
+        <h5 id="CSS补充知识"><a href="#CSS补充知识" class="headerlink" title="CSS补充知识"></a>CSS补充知识</h5><h6 id="盒子模型部分补充知识点"><a href="#盒子模型部分补充知识点" class="headerlink" title="盒子模型部分补充知识点"></a>盒子模型部分补充知识点</h6><ol>
+<li>width：-webkit-fill-available 自动撑满空间；</li>
+<li>width: fit-content 根据内容自适应宽度；</li>
+<li>width: max-conten 根据内容自适应（按照最大的子元素内容长度）</li>
+</ol>
+<hr>
+<h6 id="背景处理部分补充知识点"><a href="#背景处理部分补充知识点" class="headerlink" title="背景处理部分补充知识点"></a>背景处理部分补充知识点</h6><ol>
+<li><p>background-clip: </p>
+<ul>
+<li>content-box; 背景只包括内容区域</li>
+<li>padding-box; 背景包括内容和内边距</li>
+<li>border-box; 背景延伸到边框</li>
+</ul>
+</li>
+<li><p>background-repeat:</p>
+<ul>
+<li>repeat: 设置背景图片（background-img）时，重复</li>
+<li>space: 平均分配</li>
+<li>no-repeat: 不重复</li>
+</ul>
+</li>
+<li><p>background-attachment: </p>
+<ul>
+<li>fix 有滚动条时不随滚动条滚动</li>
+<li>scroll 随滚动条滚动</li>
+</ul>
+</li>
+<li><p>background-position:</p>
+<ul>
+<li>center 居中</li>
+<li>bottom right 右下</li>
+<li>50% 40%  距离上边50%, 距离右边40%</li>
+<li>100px 20px  距离上边100px, 距离右边20px</li>
+</ul>
+</li>
+<li><p>background-size:</p>
+<ul>
+<li>100% 100% 设置背景的宽度，高度的具体值或比例</li>
+<li>cover 保证背景图片覆盖满盒子（撑满）</li>
+<li>contain 保证背景图片完全显示（可能有留白）</li>
+</ul>
+</li>
+<li><p>background-img: url(),url(),… 背景图片多个</p>
+</li>
+<li><p>background: red url() no-repeat center （一行语句）</p>
+</li>
+<li><p>盒子阴影</p>
+<ul>
+<li>box-shadow: 10px 10px 10px rgba(100,100,100,.2);<br>各个属性值分别为水平偏移量，垂直偏移量，柔和度，颜色</li>
+</ul>
+</li>
+<li><p>背景渐变色：</p>
+<ul>
+<li>线性渐变<br>background: liner-gradient(90deg, red, green, blue)</li>
+<li>镜像渐变<br>bacakground: radial-gradient(at 50% 50%, red, green, blue)</li>
+<li>渐变标志位(绘制小太阳)<br>bacakground: radial-gradient(red, yellow 30%, black 70%, black 100%)</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h5 id="数据元素样式补充知识"><a href="#数据元素样式补充知识" class="headerlink" title="数据元素样式补充知识"></a>数据元素样式补充知识</h5><ol>
+<li>表格标题标签：<caption>table title</caption></li>
+<li>单元格间距：border-spacing</li>
+<li>表格细线：border-collapse:collapse</li>
+<li>有序列表ul列表编号风格属性：<br>-list-style-tyle：<br> 可以设置为none,取消默认风格，该属性会继承<br>-list-style-imag<br> 也可以在li标签中用背景图片，调整位置作为列表编号</li>
+<li>伪元素before,after样式：当作独立元素对待</li>
+</ol>
+<hr>
+<h5 id="浮动布局补充知识"><a href="#浮动布局补充知识" class="headerlink" title="浮动布局补充知识"></a>浮动布局补充知识</h5><ol>
+<li>浮动元素会脱离文档流</li>
+<li>==行级元素浮动后转为块元素,可以设置宽高==</li>
+<li>清除浮动：<ul>
+<li>clear:left    清除该元素左侧浮动元素的影响</li>
+<li>clear:right   清除该元素左侧浮动元素的影响</li>
+<li>clear:both    清除该元素两侧侧浮动元素的影响</li>
+</ul>
+</li>
+<li>清除浮动的方法：<ul>
+<li>补充一个空元素<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">.clearfix&#123;</span><br><span class="line">   clear:both</span><br><span class="line">&#125;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;div&gt;父元素，要求子元素撑开</span><br><span class="line">   &lt;div&gt;子元素1，浮动&lt;div&gt;</span><br><span class="line">   &lt;div&gt;子元素2，浮动&lt;div&gt;</span><br><span class="line">   &lt;article class&#x3D;&#39;clearfix&#39;&gt;补一个空元素，并对其应用cleafix类&lt;&#x2F;article&gt;</span><br><span class="line">&lt;div&gt;</span><br></pre></td></tr></table></figure></li>
+<li>使用伪元素after<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">main是父盒子</span><br><span class="line">main::after &#123;</span><br><span class="line">   content: &#39;&#39;;</span><br><span class="line">   clear: both;</span><br><span class="line">   display: block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>利用触发BFC机制清除浮动,<br>==触发BFC后，父元素计算高度时，浮动子元素高度也参与计算==<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">overflow:hidden</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
