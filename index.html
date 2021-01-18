@@ -93,13 +93,13 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h5 id="CSS补充知识"><a href="#CSS补充知识" class="headerlink" title="CSS补充知识"></a>CSS补充知识</h5><h6 id="盒子模型部分补充知识点"><a href="#盒子模型部分补充知识点" class="headerlink" title="盒子模型部分补充知识点"></a>盒子模型部分补充知识点</h6><ol>
+        <h5 id="盒子模型部分补充知识点"><a href="#盒子模型部分补充知识点" class="headerlink" title="盒子模型部分补充知识点"></a>盒子模型部分补充知识点</h5><ol>
 <li>width：-webkit-fill-available 自动撑满空间；</li>
 <li>width: fit-content 根据内容自适应宽度；</li>
 <li>width: max-conten 根据内容自适应（按照最大的子元素内容长度）</li>
 </ol>
 <hr>
-<h6 id="背景处理部分补充知识点"><a href="#背景处理部分补充知识点" class="headerlink" title="背景处理部分补充知识点"></a>背景处理部分补充知识点</h6><ol>
+<h5 id="背景处理部分补充知识点"><a href="#背景处理部分补充知识点" class="headerlink" title="背景处理部分补充知识点"></a>背景处理部分补充知识点</h5><ol>
 <li><p>background-clip: </p>
 <ul>
 <li>content-box; 背景只包括内容区域</li>
@@ -171,9 +171,89 @@
 </ul>
 </li>
 <li>清除浮动的方法：<ul>
-<li>补充一个空元素<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">.clearfix&#123;</span><br><span class="line">   clear:both</span><br><span class="line">&#125;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;div&gt;父元素，要求子元素撑开</span><br><span class="line">   &lt;div&gt;子元素1，浮动&lt;div&gt;</span><br><span class="line">   &lt;div&gt;子元素2，浮动&lt;div&gt;</span><br><span class="line">   &lt;article class&#x3D;&#39;clearfix&#39;&gt;补一个空元素，并对其应用cleafix类&lt;&#x2F;article&gt;</span><br><span class="line">&lt;div&gt;</span><br></pre></td></tr></table></figure></li>
-<li>使用伪元素after<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">main是父盒子</span><br><span class="line">main::after &#123;</span><br><span class="line">   content: &#39;&#39;;</span><br><span class="line">   clear: both;</span><br><span class="line">   display: block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>利用触发BFC机制清除浮动,<br>==触发BFC后，父元素计算高度时，浮动子元素高度也参与计算==<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">overflow:hidden</span><br></pre></td></tr></table></figure></li>
+<li>补充一个空元素<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">.clearfix&#123;</span><br><span class="line">   clear:both</span><br><span class="line">&#125;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;div&gt;父元素，要求子元素撑开</span><br><span class="line">   &lt;div&gt;子元素<span class="number">1</span>，浮动&lt;div&gt;</span><br><span class="line">   &lt;div&gt;子元素<span class="number">2</span>，浮动&lt;div&gt;</span><br><span class="line">   &lt;article <span class="class"><span class="keyword">class</span></span>=<span class="string">&#x27;clearfix&#x27;</span>&gt;补一个空元素，并对其应用cleafix类&lt;/article&gt;</span><br><span class="line">&lt;div&gt;</span><br></pre></td></tr></table></figure></li>
+<li>使用伪元素after<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">main是父盒子</span><br><span class="line">main::after &#123;</span><br><span class="line">   content: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">   clear: both;</span><br><span class="line">   display: block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>利用触发BFC机制清除浮动,<br>==触发BFC后，父元素计算高度时，浮动子元素高度也参与计算==<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">overflow:hidden</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>环绕距离控制：<ul>
+<li>shape-outside: border-box;</li>
+<li>shape-outside: margin-box;</li>
+<li>shape-outside: content-box;</li>
+<li>shape-outside: padding-box;</li>
+</ul>
+</li>
+<li>浮动显示区域形状控制：<ul>
+<li>clip-path: circle(50% at 0 0)</li>
+<li>clip-path: ellipse(20% 30%)</li>
+<li>clip-path: polygon(50% 0, 50% 100%, 0 50%)</li>
+</ul>
+</li>
+<li>内容环绕排版：shape-outside 和 clip-path 属性值一致</li>
+</ol>
+<h5 id="定位补充知识"><a href="#定位补充知识" class="headerlink" title="定位补充知识"></a>定位补充知识</h5><ol>
+<li>相对定位：保留空间位，相对自己在文档中的原位置</li>
+<li>绝对定位：不保留空间位，相对最近的开启了定位的父元素，子绝父相</li>
+<li>当元素没有宽高时，通过定位可以设置宽高<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">div是一个子元素</span><br><span class="line"> div &#123;</span><br><span class="line">     background:red;</span><br><span class="line">     position:absolute;</span><br><span class="line">     left:300px;</span><br><span class="line">     right:<span class="number">0</span>;</span><br><span class="line">     top:100px;</span><br><span class="line">     bottom:100px;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+<li>==通过定位实现元素居中的几种方式==<ul>
+<li>left:0.5*（父盒子宽度-子元素宽度), 垂直居中同理</li>
+<li>left: 50% ; margin-left:-0.5*子元素宽度，垂直居中同理</li>
+</ul>
+</li>
+</ol>
+<p>5.定位叠加的层级：z-index，属性值越大优先级越高</p>
+<p>6.固定定位：相对于浏览器窗口进行定位，脱离原来的文档流<br>    - 使用固定定位做顶部导航栏时，下面的主体内容会穿透导航 栏，主体内容盒子需要设置maigin-top；</p>
+<ol start="7">
+<li>粘性定位：sticky,<ul>
+<li>可以用来把文章标题固定在顶部，不随文 章内容滚动<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">当h2是同级时，会出现逐渐叠加的效果</span><br><span class="line">当h2不是同级时，比如把<span class="number">3</span>个h2放到<span class="number">3</span>个section里，section是同级关系，出现会直接顶掉的效果。</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    article &#123;</span><br><span class="line">        width:100px;</span><br><span class="line">        height:100px;</span><br><span class="line">        border: 1px solid black;</span><br><span class="line">        overflow:scroll;</span><br><span class="line">    &#125;</span><br><span class="line">    article h2:nth-<span class="keyword">of</span>-<span class="function"><span class="title">type</span>(<span class="params">even</span>)</span>&#123;</span><br><span class="line">        background: #333;</span><br><span class="line">    &#125;</span><br><span class="line">    h2 &#123;</span><br><span class="line">        background:green;</span><br><span class="line">        color:white;</span><br><span class="line">        position:sticky;</span><br><span class="line">        top:0px;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;article&gt;</span><br><span class="line">    &lt;h2&gt;title1&lt;h2&gt;</span><br><span class="line">    &lt;p&gt;djflasjflsfjlmjiejfej&lt;p&gt;</span><br><span class="line">    &lt;h2&gt;title2&lt;h2&gt;</span><br><span class="line">    &lt;p&gt;djflasjflsfjlmjiejfej&lt;p&gt;</span><br><span class="line">    &lt;h2&gt;title3&lt;h2&gt;</span><br><span class="line">    &lt;p&gt;djflasjflsfjlmjiejfej&lt;p&gt;</span><br><span class="line">&lt;article&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h5 id="flex布局补充知识"><a href="#flex布局补充知识" class="headerlink" title="flex布局补充知识"></a>flex布局补充知识</h5></li>
+</ol>
+<h6 id="弹性盒子"><a href="#弹性盒子" class="headerlink" title="弹性盒子"></a>弹性盒子</h6><ol>
+<li>把普通盒子变成弹性盒子<ul>
+<li>display:flex;</li>
+</ul>
+</li>
+<li>盒子中弹性元素的方向<ul>
+<li>flex-direction:row (默认从左到右)</li>
+<li>flex-direction:row-reverse</li>
+<li>flex-direction:column</li>
+<li>flex-direction:column-reverse</li>
+</ul>
+</li>
+<li>盒子中的元素超过一行时排列<ul>
+<li>flex-wrap:nowrap; ==（默认情况下会把弹性元素变小排在一行）==</li>
+<li>flex-wrap: wrap 从下往上折行</li>
+<li>flex-wrap: wrap-reverse; 从下往上折行</li>
+<li>如果想从上往下或从下往上，改变flex-direction的方向</li>
+</ul>
+</li>
+<li>弹性元素延主轴的排列方式<ul>
+<li>justify-content: flex-start; (默认)</li>
+<li>justify-content: flex-end;</li>
+<li>justify-content: center</li>
+<li>justify-content: space-between;(左右靠边)</li>
+<li>justify-content: space-around;(左右两侧都有间距)</li>
+<li>justify-content: space-evenly;(完全平均分布)</li>
+</ul>
+</li>
+<li>弹性元素延交叉轴的排列方式<ul>
+<li>aline-items: flex-start; （默认）</li>
+<li>aline-items: flex-end;</li>
+<li>aline-items: center;</li>
+<li>aline-items: stretch; ==(拉伸对其交叉轴两端，优先级低于元素设置的尺寸)==</li>
+</ul>
+</li>
+<li>==多行元素延交叉轴的排列方式==<ul>
+<li>默认情况下两行有间距</li>
+<li>align-content：flex-start;</li>
+<li>align-content: flex-end;</li>
+<li>align-content: center;</li>
+<li>align-content: space-between;</li>
+<li>align-content: space-around;</li>
+<li>align-content: space-evenly;</li>
 </ul>
 </li>
 </ol>
@@ -181,7 +261,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/13/CSS-review-notes/" data-id="ckjvbvbu400002guah25b47hy" data-title="CSS review notes" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/13/CSS-review-notes/" data-id="ckk2kacda0000d8uah6e7gfjp" data-title="CSS review notes" class="article-share-link">Share</a>
       
       
       
@@ -231,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/08/my-first-blog/" data-id="ckjvbvbug00022guafd0m24fk" data-title="hexo + gitup 搭建个人博客" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/08/my-first-blog/" data-id="ckk2kacdl0002d8ua0up2bm6t" data-title="hexo + gitup 搭建个人博客" class="article-share-link">Share</a>
       
       
       
@@ -278,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/08/hello-world/" data-id="ckjvbvbu900012gua617v4m3n" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/08/hello-world/" data-id="ckk2kacdf0001d8uabjc0b4q9" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
